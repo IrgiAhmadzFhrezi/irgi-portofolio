@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  font-family: "Poppins", sans-serif;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  color-scheme: dark;
+  --hero-grid-line: #ffffff;
+  --hero-grid-opacity: 0.035;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+:root[data-theme="light"] {
+  background: #ffffff;
+  color: #171717;
+  color-scheme: light;
+  --hero-grid-line: #737373;
+  --hero-grid-opacity: 0.12;
+}
+
+:root[data-theme="light"] body,
+:root[data-theme="light"] nav,
+:root[data-theme="light"] section {
+  background-color: #ffffff;
+  color: #171717;
+}
+
+:root[data-theme="light"] [class~="border-white/5"],
+:root[data-theme="light"] [class~="border-white/10"],
+:root[data-theme="light"] [class~="border-white/15"],
+:root[data-theme="light"] [class~="border-white/30"] {
+  border-color: #e5e7eb;
+}
+
+:root[data-theme="light"] [class~="bg-[#0a0a0a]"] {
+  background-color: #ffffff;
+}
+
+:root[data-theme="light"] [class~="bg-neutral-950"] {
+  background-color: #f3f4f6;
+}
+
+:root[data-theme="light"] [class~="bg-neutral-900"] {
+  background-color: #e5e7eb;
+}
+
+:root[data-theme="light"] [class~="bg-white/3"] {
+  background-color: #f9fafb;
+}
+
+:root[data-theme="light"] [class~="bg-white/2.5"] {
+  background-color: rgb(37 99 235 / 4%);
+}
+
+:root[data-theme="light"] [class~="bg-white"] {
+  background-color: #171717;
+}
+
+:root[data-theme="light"] [class~="text-white"] {
+  color: #171717;
+}
+
+:root[data-theme="light"] [class~="text-black"] {
+  color: #ffffff;
+}
+
+:root[data-theme="light"] [class~="text-neutral-300"] {
+  color: #404040;
+}
+
+:root[data-theme="light"] [class~="text-neutral-400"] {
+  color: #525252;
+}
+
+:root[data-theme="light"] [class~="text-neutral-500"],
+:root[data-theme="light"] [class~="text-neutral-600"] {
+  color: #737373;
+}
+
+:root[data-theme="light"] [class~="text-neutral-700"] {
+  color: #a3a3a3;
+}
+
+:root[data-theme="light"] [class~="text-blue-400"],
+:root[data-theme="light"] [class~="text-blue-400/70"] {
+  color: #1d4ed8;
+}
+
+:root[data-theme="light"] [class~="text-blue-300"] {
+  color: #1e40af;
+}
+
+:root[data-theme="light"] [class~="hover:text-white"]:hover {
+  color: #171717;
+}
+
+:root[data-theme="light"] [class~="hover:bg-white/5"]:hover {
+  background-color: #f3f4f6;
+}
+
+:root[data-theme="light"] [class~="placeholder:text-neutral-600"]::placeholder {
+  color: #737373;
+}
