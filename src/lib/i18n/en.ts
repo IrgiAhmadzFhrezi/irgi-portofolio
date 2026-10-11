@@ -18,7 +18,7 @@ const en = {
     role: "SOFTWARE ENGINEER",
     statement: "I build practical software for real-world problems.",
     introduction:
-      "I'm a Computer Engineering graduate focused on building web applications, backend systems, and practical software solutions. I enjoy turning real-world problems into useful and maintainable products.",
+      "I'm an Engineering graduate specializing in Computer Engineering, interested in software development, system design, and building practical technology solutions. I enjoy turning real-world problems into useful, reliable, and maintainable products across different platforms.",
     viewWork: "View My Work",
     downloadCv: "Download CV",
     basedIn: "Based in",
