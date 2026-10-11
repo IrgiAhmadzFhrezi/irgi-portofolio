@@ -1,4 +1,3 @@
-
 <script lang="ts">
   import nexadeskTickets from '#lib/assets/nexadesk-tickets.jpeg';
   import inventoryManagement from '#lib/assets/inventory-management.png';
@@ -279,33 +278,48 @@
       {/each}
 
       <!-- Contact CTA -->
-      <section class="py-16 sm:py-24" aria-label={t.nav.contact}>
-        <div class="relative overflow-hidden rounded-xl border border-white/9 bg-[#101012] px-6 py-10 text-center sm:px-12 sm:py-14">
-          <div
-            class="pointer-events-none absolute left-1/2 top-0 h-40 w-72 -translate-x-1/2 rounded-full bg-blue-500/8 blur-3xl"
-            aria-hidden="true"
-          ></div>
+      <section class="py-14 sm:py-20" aria-label={t.nav.contact}>
+        <div class="border-y border-white/10 py-9 sm:py-12">
+          <div class="grid gap-7 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] md:items-center md:gap-12">
+            <div>
+              <p class="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-blue-400">
+                <span class="h-px w-6 bg-blue-400" aria-hidden="true"></span>
+                {t.projectPage.whatsNext}
+              </p>
 
-          <div class="relative">
-            <p class="text-xs font-medium uppercase tracking-[0.2em] text-blue-400">
-              {t.projectPage.whatsNext}
-            </p>
+              <h2 class="mt-4 max-w-xl text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
+                {t.projectPage.contactTitle}
+              </h2>
+            </div>
 
-            <h2 class="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
-              {t.projectPage.contactTitle}
-            </h2>
+            <div class="max-w-xl md:justify-self-end">
+              <p class="text-sm leading-7 text-neutral-400 sm:text-base">
+                {t.projectPage.contactDescription}
+              </p>
 
-            <p class="mx-auto mt-4 max-w-lg text-sm leading-7 text-neutral-400">
-              {t.projectPage.contactDescription}
-            </p>
-
-            <a
-              href="/#contact"
-              class="mt-7 inline-flex min-h-11 items-center gap-2 rounded-md bg-white px-5 text-sm font-medium text-black transition-colors hover:bg-neutral-200"
-            >
-              {t.projectPage.contactAction}
-              <span aria-hidden="true">↗</span>
-            </a>
+              <a
+                href="/#contact"
+                class="group mt-5 inline-flex min-h-11 items-center gap-3 text-sm font-medium text-white"
+              >
+                <span class="border-b border-white/30 pb-1 transition-colors group-hover:border-white">
+                  {t.projectPage.contactAction}
+                </span>
+                <span
+                  class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 transition-colors group-hover:border-white/40"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 20 20" fill="none" class="h-4 w-4">
+                    <path
+                      d="M5 15 15 5M6 5h9v9"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
