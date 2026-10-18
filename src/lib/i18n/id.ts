@@ -139,6 +139,11 @@ const id = {
     imagePortfolioAlt: "Tangkapan layar halaman utama situs portofolio pribadi",
     imageWaterQualityAlt:
       "Tangkapan layar dasbor pemantauan kualitas air dengan nilai pH, turbidity, dan TDS",
+    searchProjects: "Cari proyek",
+    filterByTechnology: "Filter berdasarkan teknologi",
+    allTechnologies: "Semua Teknologi",
+    noProjectsFound: "Tidak ada proyek yang ditemukan",
+    clearFilters: "Hapus pencarian dan filter",
     details: [
       {
         name: "NexaDesk",

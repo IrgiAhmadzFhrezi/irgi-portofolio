@@ -8,6 +8,8 @@
   import { language, translations } from '#lib/i18n/index.svelte.js';
 
   let t = $derived(translations[language.current]);
+  let searchQuery = $state('');
+  let selectedTechnology = $state('all');
 
   const projects = [
     {
@@ -44,6 +46,37 @@
       live: ''
     }
   ];
+
+  const technologies = $derived(
+    [...new Set(projects.flatMap((project) => project.technologies))].sort((a, b) =>
+      a.localeCompare(b)
+    )
+  );
+
+  const filteredProjects = $derived(
+    projects.flatMap((project, index) => {
+      const detail = t.projectPage.details[index];
+      const query = searchQuery.trim().toLowerCase();
+      const searchableText = [
+        detail.name,
+        detail.subtitle,
+        detail.description,
+        ...project.technologies
+      ]
+        .join(' ')
+        .toLowerCase();
+      const matchesSearch = !query || searchableText.includes(query);
+      const matchesTechnology =
+        selectedTechnology === 'all' || project.technologies.includes(selectedTechnology);
+
+      return matchesSearch && matchesTechnology ? [{ project, index }] : [];
+    })
+  );
+
+  function clearFilters() {
+    searchQuery = '';
+    selectedTechnology = 'all';
+  }
 </script>
 
 <svelte:head>
@@ -109,12 +142,52 @@
   <!-- Projects -->
   <section aria-label={t.projectPage.projectDetailsLabel}>
     <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-      {#each projects as project, index}
-        {@const detail = t.projectPage.details[index]}
-        <article
-          id={project.id}
-          class="scroll-mt-8 border-b border-white/8 py-14 sm:py-20 lg:py-24"
-        >
+      <div class="flex flex-col gap-3 border-b border-white/8 py-8 sm:flex-row sm:items-center">
+        <label class="relative min-w-0 flex-1">
+          <span class="sr-only">{t.projectPage.searchProjects}</span>
+          <svg
+            viewBox="0 0 20 20"
+            fill="none"
+            class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500"
+            aria-hidden="true"
+          >
+            <circle cx="8.75" cy="8.75" r="5.75" stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="m13 13 4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <input
+            bind:value={searchQuery}
+            type="search"
+            placeholder={t.projectPage.searchProjects}
+            class="min-h-12 w-full rounded-md border border-white/10 bg-white/[0.03] pl-11 pr-4 text-sm text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-blue-400/60"
+          />
+        </label>
+
+        <label class="sm:w-64">
+          <span class="sr-only">{t.projectPage.filterByTechnology}</span>
+          <select
+            bind:value={selectedTechnology}
+            class="min-h-12 w-full rounded-md border border-white/10 bg-[#111113] px-4 text-sm text-neutral-300 outline-none transition-colors focus:border-blue-400/60"
+          >
+            <option value="all">{t.projectPage.allTechnologies}</option>
+            {#each technologies as technology}
+              <option value={technology}>{technology}</option>
+            {/each}
+          </select>
+        </label>
+      </div>
+
+      {#if filteredProjects.length > 0}
+        {#each filteredProjects as { project, index }}
+          {@const detail = t.projectPage.details[index]}
+          <article
+            id={project.id}
+            class="scroll-mt-8 border-b border-white/8 py-14 sm:py-20 lg:py-24"
+          >
           <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-14 xl:gap-20">
             <!-- Project image -->
             <div class="min-w-0">
@@ -274,8 +347,22 @@
               {/if}
             </div>
           </div>
-        </article>
-      {/each}
+          </article>
+        {/each}
+      {:else}
+        <div class="border-b border-white/8 py-20 text-center sm:py-24">
+          <h2 class="text-xl font-semibold tracking-tight text-white">
+            {t.projectPage.noProjectsFound}
+          </h2>
+          <button
+            type="button"
+            onclick={clearFilters}
+            class="mt-5 inline-flex min-h-11 items-center rounded-md border border-white/15 px-4 text-sm font-medium text-neutral-300 transition-colors hover:border-white/35 hover:text-white"
+          >
+            {t.projectPage.clearFilters}
+          </button>
+        </div>
+      {/if}
 
       <!-- Contact CTA -->
       <section class="py-14 sm:py-20" aria-label={t.nav.contact}>

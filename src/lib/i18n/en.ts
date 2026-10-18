@@ -138,6 +138,11 @@ const en = {
     imagePortfolioAlt: "Screenshot of the personal portfolio website homepage",
     imageWaterQualityAlt:
       "Screenshot of the water quality monitoring dashboard with pH, turbidity, and TDS readings",
+    searchProjects: "Search projects",
+    filterByTechnology: "Filter by technology",
+    allTechnologies: "All Technologies",
+    noProjectsFound: "No projects found",
+    clearFilters: "Clear search and filters",
     details: [
       {
         name: "NexaDesk",
